@@ -1,0 +1,41 @@
+<idea-plugin>
+  <id>com.crazymt.chatgpt</id>
+  <name>ChatGPT-Copilot</name>
+  <vendor email="ytumaotong@gmail.com" url="https://github.com/Crazy-MT">ChatGPT-Copilot</vendor>
+
+  <depends>com.intellij.modules.platform</depends>
+  <depends>org.intellij.plugins.markdown</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow id="ChatGPT" anchor="right" icon="/icons/toolWindow.svg" canCloseContents="true"
+                factoryClass="com.crazymt.chatgpt.MyToolWindowFactory"/>
+<!--    <applicationConfigurable parentId="tools" instance="com.crazymt.chatgpt.settings.OpenAISettingsPanel"-->
+<!--                             id="com.crazymt.chatgpt.settings.OpenAISettings"-->
+<!--                             displayName="ChatGPT"/>-->
+<!--    <applicationConfigurable parentId="com.crazymt.chatgpt.settings.OpenAISettings" instance="com.crazymt.chatgpt.settings.CustomActionsPanel"-->
+<!--                             id="com.crazymt.chatgpt.settings.commandActions"-->
+<!--                             displayName="Custom Prompt"/>-->
+    <applicationService serviceImplementation="com.crazymt.chatgpt.settings.OpenAISettingsState"/>
+    <projectService serviceImplementation="com.crazymt.chatgpt.core.ConversationManager"/>
+    <projectService serviceImplementation="com.crazymt.chatgpt.core.SendAction"/>
+    <projectService serviceImplementation="com.crazymt.chatgpt.FreeChatGPTHandler"/>
+  </extensions>
+
+  <actions>
+    <group id="ChatGPT" text="Search with ChatGPT" description="Search with ChatGPT">
+      <action id="Prompt1Action" icon="/icons/toolWindow.svg"
+              class="com.crazymt.chatgpt.ui.action.editor.Prompt1Action"/>
+      <action id="Prompt2Action" class="com.crazymt.chatgpt.ui.action.editor.Prompt2Action"
+              icon="/icons/toolWindow.svg" />
+<!--      <action id="Prompt3Action" class="com.crazymt.chatgpt.ui.action.editor.Prompt3Action"-->
+<!--              icon="/icons/toolWindow.svg" />-->
+<!--      <action id="CustomAction" icon="/icons/toolWindow.svg"-->
+<!--              class="com.crazymt.chatgpt.ui.action.editor.CustomAction">-->
+<!--        <keyboard-shortcut keymap="$default" first-keystroke="control shift Q"/>-->
+<!--      </action>-->
+      <separator/>
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+      <separator/>
+    </group>
+  </actions>
+</idea-plugin>
