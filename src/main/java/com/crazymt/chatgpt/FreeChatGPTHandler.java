@@ -80,6 +80,7 @@ public class FreeChatGPTHandler extends AbstractHandler {
 
 
             String content = call.execute().body().string();
+            System.out.println("MTMTMT response:content" + content);
             OpenAIToken result = new Gson().fromJson(content, OpenAIToken.class);
             String token = result.getToken();
             System.out.println("MTMTMT response:token" + token);
@@ -119,6 +120,7 @@ public class FreeChatGPTHandler extends AbstractHandler {
 
                 @Override
                 public void onEvent(@NotNull EventSource eventSource, @Nullable String id, @Nullable String type, @NotNull String data) {
+                    System.out.println("FreeChatGPTHandler.onEvent" + data);
                     handler = true;
                     if (StringUtil.isEmpty(data)) {
                         return;

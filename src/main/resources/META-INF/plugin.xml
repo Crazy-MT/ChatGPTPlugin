@@ -9,12 +9,12 @@
   <extensions defaultExtensionNs="com.intellij">
     <toolWindow id="ChatGPT" anchor="right" icon="/icons/toolWindow.svg" canCloseContents="true"
                 factoryClass="com.crazymt.chatgpt.MyToolWindowFactory"/>
-<!--    <applicationConfigurable parentId="tools" instance="com.crazymt.chatgpt.settings.OpenAISettingsPanel"-->
-<!--                             id="com.crazymt.chatgpt.settings.OpenAISettings"-->
-<!--                             displayName="ChatGPT"/>-->
-<!--    <applicationConfigurable parentId="com.crazymt.chatgpt.settings.OpenAISettings" instance="com.crazymt.chatgpt.settings.CustomActionsPanel"-->
-<!--                             id="com.crazymt.chatgpt.settings.commandActions"-->
-<!--                             displayName="Custom Prompt"/>-->
+    <applicationConfigurable parentId="tools" instance="com.crazymt.chatgpt.settings.OpenAISettingsPanel"
+                             id="com.crazymt.chatgpt.settings.OpenAISettings"
+                             displayName="ChatGPT"/>
+    <applicationConfigurable parentId="com.crazymt.chatgpt.settings.OpenAISettings" instance="com.crazymt.chatgpt.settings.CustomActionsPanel"
+                             id="com.crazymt.chatgpt.settings.commandActions"
+                             displayName="Custom Prompt"/>
     <applicationService serviceImplementation="com.crazymt.chatgpt.settings.OpenAISettingsState"/>
     <projectService serviceImplementation="com.crazymt.chatgpt.core.ConversationManager"/>
     <projectService serviceImplementation="com.crazymt.chatgpt.core.SendAction"/>

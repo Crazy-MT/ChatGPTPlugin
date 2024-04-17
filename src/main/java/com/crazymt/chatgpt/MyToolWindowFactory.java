@@ -44,6 +44,21 @@ public class MyToolWindowFactory implements ToolWindowFactory {
             public void selectionChanged(@NotNull ContentManagerEvent event) {
                 project.putUserData(ACTIVE_CONTENT,gpt35TurboToolWindow.getPanel());
             }
+
+            @Override
+            public void contentAdded(@NotNull ContentManagerEvent event) {
+                ContentManagerListener.super.contentAdded(event);
+            }
+
+            @Override
+            public void contentRemoved(@NotNull ContentManagerEvent event) {
+                ContentManagerListener.super.contentRemoved(event);
+            }
+
+            @Override
+            public void contentRemoveQuery(@NotNull ContentManagerEvent event) {
+                ContentManagerListener.super.contentRemoveQuery(event);
+            }
         });
 
         List<AnAction> actionList = new ArrayList<>();
