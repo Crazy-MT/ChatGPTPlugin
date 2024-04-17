@@ -17,3 +17,4 @@ ChatGPT-Copilot 插件是一款为 IntelliJ IDEA 开发的插件，为开发者�
 ## 使用方法：
 安装插件后，选中代码后，右键选择 "Translate" 进行翻译，右键选择 "Code Interpreter" 进行代码解释，或者在菜单中选择 View -> Tool Windows -> ChatGPT 打开 ChatGPT 聊天页面，即可使用插件的各项功能，无需进行任何额外设置。
 
+![1.png](image/img.png)
