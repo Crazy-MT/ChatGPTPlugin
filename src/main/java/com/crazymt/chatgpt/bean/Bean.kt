@@ -1,5 +1,7 @@
 package com.crazymt.chatgpt.bean
 
+import com.google.gson.annotations.SerializedName
+
 data class ModelResult(val source: String, val from: String, val to: String, val src: String, val result: String?, val error: String?) {
     override fun toString(): String {
         return "$source: ${result ?: "error:${error}"}"
@@ -200,4 +202,28 @@ data class PromptFeedback(
     val safetyRatings: List<SafetyRating>
 )
 
+data class OllamaBean(
+    val model: String,
+    @SerializedName("created_at")
+    val createdAt: String,
+    val message: OllamaMessage,
+    val done: Boolean,
+    @SerializedName("total_duration")
+    val totalDuration: Long,
+    @SerializedName("load_duration")
+    val loadDuration: Long,
+    @SerializedName("prompt_eval_count")
+    val promptEvalCount: Int,
+    @SerializedName("prompt_eval_duration")
+    val promptEvalDuration: Long,
+    @SerializedName("eval_count")
+    val evalCount: Int,
+    @SerializedName("eval_duration")
+    val evalDuration: Long
+)
+
+data class OllamaMessage(
+    val role: String,
+    val content: String
+)
 

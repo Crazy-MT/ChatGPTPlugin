@@ -1,5 +1,6 @@
 package com.crazymt.chatgpt.ui;
 
+import com.crazymt.chatgpt.OfficialBuilder;
 import com.google.gson.JsonArray;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.project.Project;
@@ -37,6 +38,7 @@ public class MessageGroupComponent extends JBPanel<MessageGroupComponent> implem
 
     public MessageGroupComponent(@NotNull Project project, boolean isChatGPT) {
         this.project = project;
+        messages.add(OfficialBuilder.systemMessage("Always response in Chinese(汉字), not English"));
         setBorder(JBUI.Borders.empty(10, 10, 10, 0));
         setLayout(new BorderLayout(JBUI.scale(7), 0));
         setBackground(UIUtil.getListBackground());
@@ -161,6 +163,7 @@ public class MessageGroupComponent extends JBPanel<MessageGroupComponent> implem
         ConversationManager.getInstance(project).setConversationId(null);
         ConversationManager.getInstance(project).setNewDeviceId();
         messages = new JsonArray();
+        messages.add(OfficialBuilder.systemMessage("Always response in Chinese(汉字), not English"));
     }
 
     static class MyAdjustmentListener implements AdjustmentListener {

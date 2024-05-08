@@ -1,5 +1,6 @@
 package com.crazymt.chatgpt.core.parser;
 
+import com.crazymt.chatgpt.bean.OllamaBean;
 import com.crazymt.chatgpt.bean.OpenAIStreamBean;
 import com.crazymt.chatgpt.ui.MessageComponent;
 import com.google.gson.*;
@@ -18,6 +19,23 @@ public class Parser {
 
         component.getAnswers().clear();
         component.getAnswers().add(resultData.getMessage().getContent().getParts().get(0));
+
+        ParseResult parseResult = new ParseResult();
+        parseResult.source = component.prevAnswers();
+        parseResult.html = HtmlUtil.md2html(component.prevAnswers());
+        return parseResult;
+    }
+
+    public static ParseResult parseOllama(Project project, MessageComponent component, String response) {
+        OllamaBean resultData = new Gson().fromJson(response, OllamaBean.class);
+
+        /*String conversationId = resultData.getConversation_id();
+        String parentId = resultData.getMessage().getMetadata().getParent_id();
+        ConversationManager.getInstance(project).setParentMessageId(parentId);
+        ConversationManager.getInstance(project).setConversationId(conversationId);
+*/
+        component.getAnswers().clear();
+        component.getAnswers().add(resultData.getMessage().getContent());
 
         ParseResult parseResult = new ParseResult();
         parseResult.source = component.prevAnswers();

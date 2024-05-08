@@ -1,7 +1,7 @@
 package com.crazymt.chatgpt.core;
 
-import com.crazymt.chatgpt.FreeChatGPTHandler;
 import com.crazymt.chatgpt.MyToolWindowFactory;
+import com.crazymt.chatgpt.OllamaHandler;
 import com.crazymt.chatgpt.ui.MainPanel;
 import com.crazymt.chatgpt.ui.MessageComponent;
 import com.crazymt.chatgpt.ui.MessageGroupComponent;
@@ -9,6 +9,8 @@ import com.crazymt.chatgpt.util.StringUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.Project;
+
+import okhttp3.Call;
 import okhttp3.sse.EventSource;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -46,9 +48,9 @@ public class SendAction extends AnAction {
 
         try {
             ExecutorService executorService = mainPanel.getExecutorService();
-            FreeChatGPTHandler chatGPTHandler = project.getService(FreeChatGPTHandler.class);
+            OllamaHandler ollamaHandler = project.getService(OllamaHandler.class);
             executorService.submit(() -> {
-                EventSource handle = chatGPTHandler.handle(mainPanel, answer, data);
+                Call handle = ollamaHandler.handle(mainPanel, answer, data);
                 mainPanel.setRequestHolder(handle);
                 contentPanel.updateLayout();
                 contentPanel.scrollToBottom();

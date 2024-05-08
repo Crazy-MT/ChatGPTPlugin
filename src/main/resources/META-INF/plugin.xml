@@ -19,6 +19,7 @@
     <projectService serviceImplementation="com.crazymt.chatgpt.core.ConversationManager"/>
     <projectService serviceImplementation="com.crazymt.chatgpt.core.SendAction"/>
     <projectService serviceImplementation="com.crazymt.chatgpt.FreeChatGPTHandler"/>
+    <projectService serviceImplementation="com.crazymt.chatgpt.OllamaHandler"/>
   </extensions>
 
   <actions>
